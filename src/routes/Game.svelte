@@ -19,6 +19,7 @@
 	export function start(level: Level) {
 		size = level.size;
 		grid = create_grid(level);
+		found = [];
 		remaining = duration = level.duration;
 
 		resume();
@@ -65,8 +66,6 @@
 
 		loop();
 	}
-
-	onMount(countdown);
 </script>
 
 <div class="game" style="--size: {size}">
@@ -90,6 +89,7 @@
 
 				if (found.length === (size * size) / 2) {
 					dispatch('win');
+					playing = false;
 				}
 			}}
 			{found}

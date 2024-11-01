@@ -27,13 +27,11 @@
 							emoji
 						});
 					}
-					// incorrect answer flow
-					else {
-						reset_timeout = setTimeout(() => {
-							a = -1;
-							b = -1;
-						}, 1000);
-					}
+					// reset timeout in any case to ensure the new game starts w/o flipped cards
+					reset_timeout = setTimeout(() => {
+						a = -1;
+						b = -1;
+					}, 1000);
 				} else {
 					b = -1;
 					a = i;
