@@ -6,7 +6,6 @@
 	export let selected: boolean;
 	export let found: boolean;
 	export let group: 'a' | 'b';
-	console.log(selected);
 </script>
 
 <div class="square" class:flipped={selected || found}>
