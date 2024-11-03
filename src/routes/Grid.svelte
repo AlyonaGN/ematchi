@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import Square from './Square.svelte';
+	import { FOUND_ANIMATION_DELAY } from './utils';
 	export let grid: string[] = [];
 	export let found: string[] = [];
 
@@ -31,7 +32,7 @@
 					reset_timeout = setTimeout(() => {
 						a = -1;
 						b = -1;
-					}, 1000);
+					}, FOUND_ANIMATION_DELAY);
 				} else {
 					b = -1;
 					a = i;

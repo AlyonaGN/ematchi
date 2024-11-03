@@ -24,6 +24,7 @@
 
 <style>
 	.found {
+		margin-top: 2em;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -34,15 +35,14 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 4em;
-		height: 4em;
+		width: 8em;
+		height: 8em;
 		background: white;
-		padding: 1em;
-		border-radius: 50%;
+		border-radius: 1em;
 	}
 	img {
-		width: 2em;
-		height: 2em;
+		width: 6em;
+		height: 6em;
 		position: absolute;
 	}
 </style>
