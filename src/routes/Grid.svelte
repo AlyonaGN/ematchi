@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import Square from './Square.svelte';
-	import { FOUND_ANIMATION_DELAY } from './utils';
 	export let grid: string[] = [];
-	export let found: string[] = [];
 
 	let a = -1;
 	let b = -1;
@@ -28,18 +26,17 @@
 							emoji
 						});
 					}
-					// reset timeout in any case to ensure the new game starts w/o flipped cards
+					// reset a and b in any case to ensure the new game starts w/o flipped cards
 					reset_timeout = setTimeout(() => {
 						a = -1;
 						b = -1;
-					}, FOUND_ANIMATION_DELAY);
+					}, 1000);
 				} else {
 					b = -1;
 					a = i;
 				}
 			}}
 			selected={a === i || b === i}
-			found={found.includes(emoji)}
 			group={grid.indexOf(emoji) === i ? 'a' : 'b'}
 		/>
 	{/each}

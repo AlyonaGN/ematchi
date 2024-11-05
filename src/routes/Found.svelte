@@ -1,23 +1,14 @@
 <script lang="ts">
+	import { found } from './stores/found';
 	import { receive } from './transitions';
-	import { FOUND_ANIMATION_DELAY, get_twemoji_url } from './utils';
-
-	export let found: string[];
+	import { get_twemoji_url } from './utils';
 </script>
 
 <div class="found">
-	{#each found as emoji (emoji)}
+	{#each $found as emoji (emoji)}
 		<div class="pair">
-			<img
-				in:receive={{ key: `${emoji}:a`, delay: FOUND_ANIMATION_DELAY }}
-				alt={emoji}
-				src={get_twemoji_url(emoji)}
-			/>
-			<img
-				in:receive={{ key: `${emoji}:b`, delay: FOUND_ANIMATION_DELAY }}
-				alt={emoji}
-				src={get_twemoji_url(emoji)}
-			/>
+			<img in:receive={{ key: `${emoji}:a` }} alt={emoji} src={get_twemoji_url(emoji)} />
+			<img in:receive={{ key: `${emoji}:b` }} alt={emoji} src={get_twemoji_url(emoji)} />
 		</div>
 	{/each}
 </div>

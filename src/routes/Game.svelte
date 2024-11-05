@@ -5,12 +5,12 @@
 	import Grid from './Grid.svelte';
 	import type { Level } from './levels';
 	import { shuffle } from './utils';
+	import { addFound, found, setFound } from './stores/found';
 
 	const dispatch = createEventDispatcher();
 
 	let size: number;
 	let grid: string[] = [];
-	let found: string[] = [];
 	let remaining: number = 0;
 	let duration = 0;
 	let playing: boolean;
@@ -18,9 +18,8 @@
 	export function start(level: Level) {
 		size = level.size;
 		grid = create_grid(level);
-		found = [];
+		setFound([]);
 		remaining = duration = level.duration;
-
 		resume();
 	}
 
@@ -84,17 +83,16 @@
 		<Grid
 			{grid}
 			on:found={(e) => {
-				found = [...found, e.detail.emoji];
-				if (found.length === (size * size) / 2) {
+				addFound(e.detail.emoji);
+				if ($found.length === (size * size) / 2) {
 					dispatch('win');
 					playing = false;
 				}
 			}}
-			{found}
 		/>
 	</div>
 	<div class="info">
-		<Found {found} />
+		<Found />
 	</div>
 </div>
 
